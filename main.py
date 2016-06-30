@@ -289,6 +289,21 @@ def stop():
     get_project_with_name(name).stop()
     return jsonify(command='stop')
 
+@app.route(API_V1 + "terminal", methods=['POST'])
+def terminal():
+    """
+    docker-compose exec
+    """
+    json = loads(request.data)
+    name = json["name"]
+    container_id = json["id"]
+    cmd_str = json["command"]
+
+    project = get_project_with_name(name)
+    exec_instance = project.client.exec_create(container_id, cmd=cmd_str)
+    data = project.client.exec_start(exec_instance["Id"], tty=True)
+    return jsonify(data=data)
+
 @app.route(API_V1 + "down", methods=['POST'])
 @requires_auth
 def down():
