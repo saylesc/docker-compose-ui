@@ -1,5 +1,8 @@
 <h3>{{projectId}}</h3>
 
+<p class="text-left" ng-show="terminal">
+  <terminal></terminal>
+</p>
 
 <div class="btn-group" role="group">
   <button class="btn btn-sm btn-default" ng-hide="ymlData" ng-click="yml()">view docker-compose.yml</button>
@@ -50,6 +53,7 @@
             <button class="btn btn-xs btn-inverse" ng-click="displayLogs(container.name)">logs</button>
             <a class="btn btn-xs btn-inverse" ng-href="#/project/{{projectId}}/{{container.name}}">details</a>
             <button class="btn btn-xs btn-inverse" ng-click="rebuild(id)">rebuild</button>
+            <button class="btn btn-xs btn-inverse" ng-click="setTerminal(container.name)">terminal</button>
           </div>
           <div class="panel-body">
 
@@ -93,3 +97,5 @@
   </div>
   <span ng-show="isEmpty(services)">no containers found</span>
 </div>
+
+

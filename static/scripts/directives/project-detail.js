@@ -23,6 +23,7 @@ angular.module('composeUiApp')
         var Host = $resource('api/v1/host');
         var Yml = $resource('api/v1/projects/yml/:id');
         var Readme = $resource('api/v1/projects/readme/:id');
+        var Terminal = $resource('api/v1/terminal');
 
         $scope.$watch('projectId', function (val) {
           if (val) {
@@ -130,6 +131,29 @@ angular.module('composeUiApp')
             }
           });
         };
+
+        $scope.setTerminal = function (id) {
+          $scope.terminal = id;
+          $scope.$broadcast('terminal-command', {command: 'clear'});
+        }
+
+
+        $scope.$on('terminal-input', function (e, consoleInput) {
+                var cmd = consoleInput[0];
+
+                Terminal.save({
+                  command: cmd.command,
+                  name: $scope.projectId,
+                  id: $scope.terminal
+                } ,function (response) {
+                  var lines = response.data.split('\n');
+                  $scope.$broadcast('terminal-output', {
+                      output: true,
+                      text: lines,
+                      breakLine: true
+                  });
+                });
+        });
 
 
       }

@@ -11,7 +11,8 @@
 angular
   .module('composeUiApp', [
     'ngResource',
-    'ngRoute'
+    'ngRoute',
+    'vtortola.ng-terminal'
   ])
   .config(function ($routeProvider) {
     $routeProvider
