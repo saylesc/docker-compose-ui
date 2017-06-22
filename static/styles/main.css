@@ -145,7 +145,13 @@ code {
 }
 
 header {
-  background: #3F51B5;
+  background: #363737;
+}
+
+.bottom-footer {
+  background: #363737;
+  color: #FFFFFF;
+  background-position: 20%;
 }
 
 .projects .btn-default {

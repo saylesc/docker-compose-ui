@@ -17,14 +17,25 @@
   </head>
   <body ng-app="composeUiApp">
 
+      
     <header class="text-center">
-      <img class="img-responsive margin-auto" src="images/logo.png" alt="Docker Compose UI">
+      <nav class="navbar navbar-inverse">
+        <div class="container">
+          <div class="navbar-header">
+            <img class="img-responsive margin-auto" src="images/msg136/logo-coe.png" alt="MSaaS Compose Portal">
+            <a class="navbar-brand" href="#">NATO Modeling & Simulation COE</a>
+          </div>
+         <div>
+            <h1 class="text-center" style="color: white;">MSaaS Web Portal</h1>
+         </div>
+        </div>
+      </nav>
     </header>
 
-    <div class="container" ng-controller="MainCtrl">
+    <div class="container" ng-controller="MainCtrl" style="background: #e8e8e8;">
         <div class="row text-center">
           <div class="col-md-4">
-            <h3>Projects</h3>
+            <h3>MSaaS Projects</h3>
             <div class="vertical-margin" ng-hide="isEmpty(projects.projects)">
               <form class="form-inline">
                 <div class="form-group">
@@ -79,6 +90,11 @@
             </p>
         </footer>
     </div>
+    <footer class="bottom-footer container bg-4 text-center">
+      <img class="footer__logoImg" src="https://www.mscoe.org/content/themes/coe-website/ui/shared/img/logo-footer.png">
+            <strong>NATO</strong>
+            <span>Modelling & Simulation Centre of Excellence</span>
+    </footer>
 
 
     <script src="bower_components/angular/angular.js"></script>
